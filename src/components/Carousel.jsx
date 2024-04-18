@@ -52,8 +52,20 @@ export function CarouselGreenstash() {
 
 export function CarouselMyne() {
     const images = [myne1, myne2, myne3, myne4, myne5, myne6]
+  const plugin = React.useRef(
+    Autoplay({ delay: 4000, stopOnInteraction: false, loop: true})
+  )
   return (
-    <Carousel className="w-full max-w-xs">
+    <Carousel
+      plugins={[plugin.current]}
+      opts={{
+        align: "start",
+      }}
+      orientation="horizontal"
+      className="w-full max-w-xs"
+      onMouseEnter={plugin.current.stop}
+      onMouseLeave={plugin.current.reset}
+    >
       <CarouselContent>
         {images.map((image, index) => (
           <CarouselItem key={index}>
@@ -70,13 +82,13 @@ export function CarouselMyne() {
       <CarouselPrevious />
       <CarouselNext />
     </Carousel>
-  );
+  )
 }
 
 export function CarouselFeatured() {
   const images = [itsfossnews]
   const plugin = React.useRef(
-    Autoplay({ delay: 500, stopOnInteraction: true, loop: true})
+    Autoplay({ delay: 4000, stopOnInteraction: false, loop: true})
   )
   return (
     <Carousel
