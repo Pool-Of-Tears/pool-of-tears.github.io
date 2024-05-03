@@ -41,16 +41,16 @@ function Navbar() {
   return (
     <nav className="navbar navbar-light mw-full flex items-center py-6 px-6 fixed top-0 z-20 backdrop-filter backdrop-blur-lg bg-opacity-30">
       <div className="w-full flex justify-between items-center mx-auto">
-        <div className="d-flex justify-content-start">
+        <div className="flex justify-start">
           <Avatar className='transition-all hover:rotate-45 mr-4'>
             <AvatarFallback>POT</AvatarFallback>
             <AvatarImage src="https://github.com/Pool-Of-Tears.png" alt="avatar" />
           </Avatar>
         </div>
-        <div className="d-flex justify-content-center">
+        <div className="flex justify-center">
           <NavMenu />
         </div>
-        <div className="d-flex justify-content-end">
+        <div className="flex justify-end">
           <ModeToggle />
         </div>
       </div>
