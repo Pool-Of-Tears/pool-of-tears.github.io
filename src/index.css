@@ -32,9 +32,6 @@ body {
   margin: 0;
   padding: 0;
   line-height: calc(1em + 0.5rem);
-  display: flex;
-  flex-direction: column;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
   background-color: rgba(0, 0, 0, 0.103);
