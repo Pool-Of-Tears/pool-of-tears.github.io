@@ -25,6 +25,7 @@ import myne5 from "../assets/myne/myne5.heif"
 import myne6 from "../assets/myne/myne6.heif"
 
 import itsfossnews from "../assets/featured/itsfossnews.heif"
+import androidauthority from "../assets/featured/androidauthority.heif"
 
 
 export function CarouselGreenstash() {
@@ -35,9 +36,9 @@ export function CarouselGreenstash() {
         {images.map((image, index) => (
           <CarouselItem key={index}>
             <div className="p-1">
-              <Card>
+              <Card className="bg-transparent border-0 shadow-none">
                 <CardContent className="flex md:basis-1/2 lg:basis-1/3 aspect-auto items-center justify-center p-1">
-                  <img src={image} className="fill-background" style={{objectFit: 'cover', objectPosition: 'center'}} />
+                  <img src={image} className="fill-background rounded-sm" style={{objectFit: 'cover', objectPosition: 'center'}} />
                 </CardContent>
               </Card>
             </div>
@@ -53,13 +54,13 @@ export function CarouselGreenstash() {
 export function CarouselMyne() {
     const images = [myne1, myne2, myne3, myne4, myne5, myne6]
   const plugin = React.useRef(
-    Autoplay({ delay: 4000, stopOnInteraction: false, loop: true})
+    Autoplay({ delay: 4000, stopOnInteraction: false, loop: true}),
   )
   return (
     <Carousel
       plugins={[plugin.current]}
       opts={{
-        align: "start",
+        loop: true,
       }}
       orientation="horizontal"
       className="w-full max-w-xs"
@@ -70,9 +71,9 @@ export function CarouselMyne() {
         {images.map((image, index) => (
           <CarouselItem key={index}>
             <div className="p-1">
-              <Card>
+              <Card className="bg-transparent border-0 shadow-none">
                 <CardContent className="flex md:basis-1/2 lg:basis-1/3 aspect-auto items-center justify-center p-1">
-                  <img src={image} className="fill-background" style={{objectFit: 'cover', objectPosition: 'center'}} />
+                  <img src={image} className="fill-background rounded-sm" style={{objectFit: 'cover', objectPosition: 'center'}} />
                 </CardContent>
               </Card>
             </div>
@@ -86,7 +87,7 @@ export function CarouselMyne() {
 }
 
 export function CarouselFeatured() {
-  const images = [itsfossnews]
+  const images = [itsfossnews, androidauthority]
   const plugin = React.useRef(
     Autoplay({ delay: 4000, stopOnInteraction: false, loop: true})
   )
@@ -94,17 +95,21 @@ export function CarouselFeatured() {
     <Carousel
       plugins={[plugin.current]}
       opts={{
-        align: "start",
+        loop: true,
+        slidesToScroll: 1,
+        slidesToShow: 1,
       }}
       orientation="vertical"
       className="w-full max-w-xs"
+      onMouseEnter={plugin.current.stop}
+      onMouseLeave={plugin.current.reset}
     >
       <CarouselContent>
         {images.map((image, index) => (
-          <CarouselItem key={index}>
+          <CarouselItem key={index} className="pl-1 basis-full w-full">
             <div className="p-1">
-              <Card>
-                <CardContent className="flex md:basis-1/2 lg:basis-1/3 aspect-auto items-center justify-center p-1">
+              <Card className="bg-transparent border-0 shadow-none">
+                <CardContent className="flex w-full basis-full aspect-auto items-center justify-center p-1">
                   <img src={image} className="fill-background" style={{objectFit: 'cover', objectPosition: 'center'}} />
                 </CardContent>
               </Card>
@@ -112,8 +117,6 @@ export function CarouselFeatured() {
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselPrevious />
-      <CarouselNext />
     </Carousel>
   )
 }

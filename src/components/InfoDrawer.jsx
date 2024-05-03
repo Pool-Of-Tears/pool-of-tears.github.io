@@ -1,5 +1,3 @@
-import * as React from "react"
-
 import { Button } from "@/components/ui/button"
 import {
   Drawer,
@@ -11,19 +9,25 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer"
+import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar"
 
 
 export function GreenstashDrawer() {
   return (
     <Drawer>
-      <DrawerTrigger asChild>
-        <Button variant="outline">Open Drawer</Button>
+      <DrawerTrigger asChild >
+        <Button variant="outline" size="icon">
+          <Avatar>
+            <AvatarFallback>Greenstash Logo</AvatarFallback>
+            <AvatarImage src="src/assets/greenstash/greenstash-icon.heif" alt="Greenstash Logo" />
+          </Avatar>
+        </Button>
       </DrawerTrigger>
       <DrawerContent>
         <div className="mx-auto w-full max-w-sm">
           <DrawerHeader>
             <DrawerTitle>Greenstash</DrawerTitle>
-            <DrawerDescription>Set your daily activity goal.</DrawerDescription>
+            <DrawerDescription>Set your budget goals with Greenstash!</DrawerDescription>
           </DrawerHeader>
         </div>
         <div className="p-4">
@@ -43,13 +47,18 @@ export function MyneDrawer() {
   return (
     <Drawer>
       <DrawerTrigger asChild>
-        <Button variant="outline">open</Button>
+        <Button variant="outline" size="icon">
+          <Avatar>
+            <AvatarFallback>Myne Logo</AvatarFallback>
+            <AvatarImage src="src/assets/myne/myne-icon.heif" alt="Myne Logo" />
+          </Avatar>
+        </Button>
       </DrawerTrigger>
       <DrawerContent>
         <div className="mx-auto w-full max-w-sm">
           <DrawerHeader>
             <DrawerTitle>Myne</DrawerTitle>
-            <DrawerDescription>Set your daily activity goal.</DrawerDescription>
+            <DrawerDescription>Get the b</DrawerDescription>
           </DrawerHeader>
         </div>
         <div className="p-4">

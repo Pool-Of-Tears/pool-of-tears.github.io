@@ -2,7 +2,7 @@ import * as React from "react"
 import {Link} from "react-router-dom"
 
 import { cn } from "@/lib/utils"
-import { Bolt } from "lucide-react"
+import { IconBolt } from "@tabler/icons-react"
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -65,9 +65,9 @@ export function NavMenu() {
                     className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
                     href="/"
                   >
-                    <Bolt className="h-6 w-6" />
+                    <IconBolt className="h-6 w-6" />
                     <div className="mb-2 mt-4 text-lg font-medium">
-                      PoolOfTears
+                      shadcn/ui
                     </div>
                     <p className="text-sm leading-tight text-muted-foreground">
                       Beautifully designed components built with Radix UI and
@@ -105,7 +105,7 @@ export function NavMenu() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/docs" legacyBehavior passHref>
+          <Link to="/docs">
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
               Documentation
             </NavigationMenuLink>
@@ -116,31 +116,24 @@ export function NavMenu() {
   )
 }
 
-const ListItem = 
-  React.forwardRef
-  React.ElementRef<"a">
-  React.ComponentPropsWithoutRef<"a">
-(({ className, title, children, ...props }, ref) => {
-  return (
-    <li>
-      <NavigationMenuLink asChild>
-        <a
-          ref={ref}
-          className={cn(
-            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-            className
-          )}
-          {...props}
-        >
-          <div className="text-sm font-medium leading-none">{title}</div>
-          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-            {children}
-          </p>
-        </a>
-      </NavigationMenuLink>
-    </li>
-  )
-})
-ListItem.displayName = "ListItem"
+const ListItem = React.forwardRef(({ className, children, title, ...props }, forwardedRef) => (
+  <li>
+    <NavigationMenuLink asChild>
+      <a
+        className={cn(
+          'focus:shadow-[0_0_0_2px] focus:shadow-violet7 hover:bg-mauve3 block select-none rounded-[6px] p-3 text-[15px] leading-none no-underline outline-none transition-colors',
+          className
+        )}
+        {...props}
+        ref={forwardedRef}
+      >
+        <div className="text-violet12 mb-[5px] font-medium leading-[1.2]">{title}</div>
+        <p className="text-mauve11 leading-[1.4]">{children}</p>
+      </a>
+    </NavigationMenuLink>
+  </li>
+));
+
+ListItem.displayName = 'ListItem'; // Add display name to the component
 
 export default NavMenu
