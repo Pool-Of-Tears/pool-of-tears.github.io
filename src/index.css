@@ -108,3 +108,12 @@ set custom font and dim image background when in dark mode
 html {
   overflow-y: scroll;
 }
+
+/* For Chrome, Safari, and Opera */
+::-webkit-scrollbar {
+  width: 0;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
