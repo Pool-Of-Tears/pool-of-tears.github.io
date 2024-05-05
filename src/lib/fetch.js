@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 export function githubFetch() {
   const [myneApkGithubUrl, setMyneApkUrl] = useState('');
@@ -6,10 +7,9 @@ export function githubFetch() {
 
   useEffect(() => {
     const fetchApkUrl = (repo) => {
-      return fetch(`https://api.github.com/repos/Pool-Of-Tears/${repo}/releases`)
-        .then((response) => response.json())
-        .then((data) => {
-          const latestRelease = data[0];
+      return axios.get(`/github/repos/Pool-Of-Tears/${repo}/releases`)
+        .then((response) => {
+          const latestRelease = response.data[0];
           const apkAsset = latestRelease.assets.find((asset) => asset.name.endsWith('.apk'));
           return apkAsset.browser_download_url;
         });
@@ -24,22 +24,24 @@ export function githubFetch() {
   return { myneApkGithubUrl, greenStashApkGithubUrl };
 }
 
-//for future use, when CORS handling enabled
+// function for fetching fdroid apks
 export function fdroidFetch() {
   const [myneApkFdroidUrl, setMyneApkFdroidUrl] = useState('');
   const [greenStashApkFdroidUrl, setGreenStashApkFdroidUrl] = useState('');
 
   useEffect(() => {
     const fetchApkUrl = (packageName) => {
-      return fetch(`https://f-droid.org/api/v1/packages/${packageName}`)
-        .then((response) => response.json())
-        .then((data) => {
-          const latestPackage = data.package;
-          const apkVersion = latestPackage.suggestedVersionCode;
-          const apkUrl = `https://f-droid.org/repo/${latestPackage.packageName}_${apkVersion}.apk`;
-          console.log(apkUrl);
-          return apkUrl;
-        });
+      return axios.get(`/fdroid/packages/${packageName}`).then((response) => {
+        console.log('Response data:', response.data);
+        const latestPackage = response.data;
+        if (!latestPackage) {
+          throw new Error(`No package found in response for ${packageName}`);
+        }
+        const apkVersion = latestPackage.suggestedVersionCode;
+        const apkUrl = `https://f-droid.org/repo/${latestPackage.packageName}_${apkVersion}.apk`;
+        console.log(apkUrl);
+        return apkUrl;
+      });
     };
 
     Promise.all([fetchApkUrl('com.starry.myne'), fetchApkUrl('com.starry.greenstash')]).then(

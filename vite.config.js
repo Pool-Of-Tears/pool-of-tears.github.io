@@ -6,8 +6,22 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src"),
+      '@': path.resolve(__dirname, './src'),
     },
   },
-  assetsInclude: ["src/assets/**"],
+  assetsInclude: ['src/assets/**'],
+  server: {
+    proxy: {
+      '/fdroid': {
+        target: 'https://f-droid.org',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/fdroid/, '/api/v1'),
+      },
+      '/github': {
+        target: 'https://api.github.com',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/github/, ''),
+      },
+    },
+  },
 });
