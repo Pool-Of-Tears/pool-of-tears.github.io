@@ -10,6 +10,7 @@ import {
   DrawerTrigger,
 } from '@/components/ui/drawer';
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
+import ChangelogViewer from './Changelog';
 import { IconBrandAndroid, IconBrandGithub, IconBrandGooglePlay } from '@tabler/icons-react';
 import { githubFetch, fdroidFetch } from '../lib/fetch';
 import { strings } from '../lib/strings';
@@ -46,6 +47,7 @@ export function InfoDrawer({ type, apkGithubUrl, apkFdroidUrl }) {
           <DrawerHeader>
             <DrawerTitle>{drawerStrings.title}</DrawerTitle>
             <DrawerDescription>{drawerStrings.description}</DrawerDescription>
+            <ChangelogViewer repo={type} />
           </DrawerHeader>
         </div>
         <div className="p-4">
@@ -58,7 +60,7 @@ export function InfoDrawer({ type, apkGithubUrl, apkFdroidUrl }) {
                 </Button>
               </a>
               <a href={apkFdroidUrl} className="flex-grow mb-2 md:mb-0 md:ml-1 md:mr-1">
-                {/* <a 
+                {/* <a
                 href={drawerStrings.fdroidLink}
                 className="flex-grow mb-2 md:mb-0 md:ml-1 md:mr-1"
               > */}
