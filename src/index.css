@@ -42,6 +42,11 @@ h1 {
   line-height: 1.1;
 }
 
+h2 {
+  font-size: 1.2em;
+  line-height: 1.3;
+}
+
 button {
   border-radius: 25px;
   border: 1px solid transparent;
@@ -91,7 +96,7 @@ header {
   width: 100%;
 }
 
-/* 
+/*
 set custom font and dim image background when in dark mode
 @font-face {
   font-family: AestheticRegular, 'AestheticRegular', serif;

@@ -9,10 +9,9 @@ export default function Root() {
         <Navbar />
       </header>
       <Outlet />
-      <footer>
+      {/* <footer>
         <Footer />
-      </footer>
+      </footer> */}
     </div>
   );
 }
-e
