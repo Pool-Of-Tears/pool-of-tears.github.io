@@ -5,5 +5,13 @@
   "singleQuote": true,
   "printWidth": 120,
   "bracketSpacing": true,
-  "endOfLine": "lf"
+  "endOfLine": "lf",
+  "overrides": [
+    {
+      "files": "strings.js",
+      "options": {
+        "singleQuote": false
+      }
+    }
+  ]
 }
