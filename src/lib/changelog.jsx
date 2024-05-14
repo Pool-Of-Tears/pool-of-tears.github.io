@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
+import { fetchChangelog } from './fetch';
 import Markdown from 'react-markdown';
-import axios from 'axios';
 import remarkGfm from 'remark-gfm';
 /**
  * ChangelogFetcher component fetches and displays the changelog of a specified repository.
@@ -20,18 +20,6 @@ import remarkGfm from 'remark-gfm';
  */
 function ChangelogFetcher({ repo, onVersionFetched }) {
   const [changelog, setChangelog] = useState('');
-
-  const fetchChangelog = async (repo) => {
-    const response = await axios.get(`https://api.github.com/repos/Pool-Of-Tears/${repo}/releases/latest`, {
-      headers: {
-        Authorization: `${import.meta.env.VITE_GITHUB_TOKEN}`,
-      },
-    });
-    console.log('Response:', response);
-    const changelog = response.data.body;
-    const version = response.data.tag_name;
-    return { changelog, version };
-  };
 
   useEffect(() => {
     fetchChangelog(repo).then(({ changelog, version }) => {
