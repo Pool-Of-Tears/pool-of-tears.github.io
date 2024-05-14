@@ -12,12 +12,12 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 import ChangelogViewer from './Changelog';
 import { IconBrandAndroid, IconBrandGithub, IconBrandGooglePlay } from '@tabler/icons-react';
-import { githubFetch, fdroidFetch } from '../lib/fetch';
+import { GithubFetch, FdroidFetch } from '../lib/fetch';
 import { strings } from '../lib/strings';
 
 export function Drawers({ type }) {
-  const { greenStashApkGithubUrl, myneApkGithubUrl } = githubFetch();
-  const { greenStashApkFdroidUrl, myneApkFdroidUrl } = fdroidFetch();
+  const { greenStashApkGithubUrl, myneApkGithubUrl } = GithubFetch();
+  const { greenStashApkFdroidUrl, myneApkFdroidUrl } = FdroidFetch();
 
   if (type === 'greenStash') {
     return <InfoDrawer type={type} apkGithubUrl={greenStashApkGithubUrl} apkFdroidUrl={greenStashApkFdroidUrl} />;
