@@ -1,5 +1,4 @@
-import { useState, useEffect } from 'react';
-import ChangelogFetcher from '../lib/changelog.jsx';
+import { useState } from 'react';
 import { Badge } from './ui/badge.jsx';
 import { Button } from './ui/button.jsx';
 import {
@@ -12,6 +11,8 @@ import {
   DialogTitle,
   DialogTrigger,
 } from './ui/dialog.jsx';
+import { IconRocket } from '@tabler/icons-react';
+import ChangelogFetcher from '../lib/changelog.jsx';
 import { strings } from '../lib/strings.js';
 
 const ChangelogViewer = ({ repo }) => {
@@ -22,15 +23,18 @@ const ChangelogViewer = ({ repo }) => {
     setVersion(fetchedVersion);
   };
   return (
-    <div className="bg-primary bg-opacity-50 p-5 rounded-lg">
+    <div >
       <Dialog>
         <DialogTrigger asChild>
-          <Badge variant="secondary">{s.title}</Badge>
+          <Badge variant="secondary">
+            <IconRocket size={16} className='mr-1'/>
+            {s.title}
+          </Badge>
         </DialogTrigger>
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
             <DialogTitle>{s.title}</DialogTitle>
-            <DialogDescription>{s.description}{version}</DialogDescription>
+            <DialogDescription>{s.description} <strong>{version}</strong></DialogDescription>
           </DialogHeader>
           <div className="flex-col px-2">
             <ChangelogFetcher repo={repo} onVersionFetched={handleVersionFetched}/>
