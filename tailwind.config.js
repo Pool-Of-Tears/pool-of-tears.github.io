@@ -1,5 +1,13 @@
 /* eslint-disable no-undef */
 /** @type {import('tailwindcss').Config} */
+
+// opacity enabler
+function toRgba(variableName) {
+  return ({ opacityValue }) => {
+    return `color-mix(in srgb, var(${variableName}) calc(${opacityValue} * 100%), transparent)`;
+  };
+}
+
 module.exports = {
   darkMode: ['class'],
   content: ['./pages/**/*.{js,jsx}', './components/**/*.{js,jsx}', './app/**/*.{js,jsx}', './src/**/*.{js,jsx}'],
@@ -14,38 +22,38 @@ module.exports = {
     },
     extend: {
       colors: {
-        border: 'var(--border)',
-        input: 'var(--input)',
-        ring: 'var(--ring)',
-        background: 'var(--background)',
-        foreground: 'var(--foreground)',
+        border: toRgba('--border'),
+        input: toRgba('--input'),
+        ring: toRgba('--ring'),
+        background: toRgba('--background'),
+        foreground: toRgba('--foreground'),
         primary: {
-          DEFAULT: 'var(--primary)',
-          foreground: 'var(--primary-foreground)',
+          DEFAULT: toRgba('--primary'),
+          foreground: toRgba('--primary-foreground'),
         },
         secondary: {
-          DEFAULT: 'var(--secondary)',
-          foreground: 'var(--secondary-foreground)',
+          DEFAULT: toRgba('--secondary'),
+          foreground: toRgba('--secondary-foreground'),
         },
         destructive: {
-          DEFAULT: 'var(--destructive)',
-          foreground: 'var(--destructive-foreground)',
+          DEFAULT: toRgba('--destructive'),
+          foreground: toRgba('--destructive-foreground'),
         },
         muted: {
-          DEFAULT: 'var(--muted)',
-          foreground: 'var(--muted-foreground)',
+          DEFAULT: toRgba('--muted'),
+          foreground: toRgba('--muted-foreground'),
         },
         accent: {
-          DEFAULT: 'var(--accent)',
-          foreground: 'var(--accent-foreground)',
+          DEFAULT: toRgba('--accent'),
+          foreground: toRgba('--accent-foreground'),
         },
         popover: {
-          DEFAULT: 'var(--popover)',
-          foreground: 'var(--popover-foreground)',
+          DEFAULT: toRgba('--popover'),
+          foreground: toRgba('--popover-foreground'),
         },
         card: {
-          DEFAULT: 'var(--card)',
-          foreground: 'var(--card-foreground)',
+          DEFAULT: toRgba('--card'),
+          foreground: toRgba('--card-foreground'),
         },
       },
       borderRadius: {
