@@ -23,29 +23,31 @@ const ChangelogViewer = ({ repo }) => {
     setVersion(fetchedVersion);
   };
   return (
-    <div >
+    <div className="flex justify-center items-center p-2">
       <Dialog>
         <DialogTrigger asChild>
-          <Badge variant="secondary">
-            <IconRocket size={16} className='mr-1'/>
+          <Badge variant="secondary" className="h-[2rem] shadow-md" >
+            <IconRocket size={16} className="mr-1" />
             {s.title}
           </Badge>
         </DialogTrigger>
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
             <DialogTitle>{s.title}</DialogTitle>
-            <DialogDescription>{s.description} <strong>{version}</strong></DialogDescription>
+            <DialogDescription className="m-0">
+              {s.description} <strong>{version}</strong>
+            </DialogDescription>
           </DialogHeader>
           <div className="flex-col px-2">
-            <ChangelogFetcher repo={repo} onVersionFetched={handleVersionFetched}/>
+            <ChangelogFetcher repo={repo} onVersionFetched={handleVersionFetched} />
           </div>
           <DialogFooter className="sm:justify-end">
-          <DialogClose asChild>
-            <Button type="button" variant="outline">
-              Close
-            </Button>
-          </DialogClose>
-        </DialogFooter>
+            <DialogClose asChild>
+              <Button type="button" variant="outline">
+                Close
+              </Button>
+            </DialogClose>
+          </DialogFooter>
         </DialogContent>
       </Dialog>
     </div>

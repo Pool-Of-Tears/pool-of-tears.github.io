@@ -30,7 +30,7 @@ function ChangelogFetcher({ repo, onVersionFetched }) {
 
   const components = {
     h2: ({ node, children, ...props }) => (
-      <h2 className="pt-4 pb-1" {...props}>
+      <h2 className="pt-4 pb-1 text-xl" {...props}>
         {children}
       </h2>
     ),
