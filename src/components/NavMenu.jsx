@@ -68,7 +68,7 @@ export function NavMenu() {
               <ul className='mt-auto'>
                 {createListItem({
                   title: s.about.org,
-                  description: s.about.info[0].description,
+                  description: s.about.description,
                   link: '/',
                   hasIcon: true,
                 })}

@@ -56,10 +56,10 @@ function MenuButton() {
         <Button variant="outline" size="icon" onClick={toggleMenu}>
           <IconMenu2 className="absolute h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all group-hover:-rotate-90 group-hover:scale-0" />
           <IconX className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all group-hover:rotate-0 group-hover:scale-100" />
-          <span className="sr-only">Navigation Menu</span>
+          <span className="sr-only">{s.title}</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent>
+      <DropdownMenuContent className="ml-6">
         <DropdownMenuItem>{s.about.title}</DropdownMenuItem>
         <DropdownMenuSub>
           <DropdownMenuSubTrigger>{s.projects.title}</DropdownMenuSubTrigger>
@@ -75,7 +75,7 @@ function MenuButton() {
             </DropdownMenuSubContent>
           </DropdownMenuPortal>
         </DropdownMenuSub>
-        <DropdownMenuItem>Contact</DropdownMenuItem>
+        <DropdownMenuItem>{s.contact.title}</DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );
@@ -83,12 +83,12 @@ function MenuButton() {
 
 function Navbar() {
   return (
-    <nav className="navbar navbar-light mw-full flex items-center py-6 px-6 fixed top-0 z-20 backdrop-filter backdrop-blur-lg bg-opacity-30">
+    <nav className="navbar navbar-light backdrop-filter backdrop-blur-lg bg-opacity-30">
       <div className="w-full flex justify-between items-center mx-auto">
         <div className="flex order-2 sm:order-1 mr-4">
           <Avatar className="transition-all hover:rotate-45">
             <AvatarFallback>POT</AvatarFallback>
-            <AvatarImage src="https://github.com/Pool-Of-Tears.png" alt="avatar" />
+            <AvatarImage src="https://github.com/Pool-Of-Tears.png" />
           </Avatar>
         </div>
         <div className="order-1 flex sm:hidden">
