@@ -15,6 +15,17 @@ import { IconBrandAndroid, IconBrandGithub, IconBrandGooglePlay } from '@tabler/
 import { GithubFetch, FdroidFetch } from '../lib/fetch';
 import { strings } from '../lib/strings';
 
+function DownloadButton({ href, Icon, label }) {
+  return (
+    <a href={href} className="flex-grow mb-2 md:mb-0 md:ml-1 md:mr-1">
+      <Button className="text-md">
+        <Icon size={20} className="mr-1" />
+        {label}
+      </Button>
+    </a>
+  );
+}
+
 export function Drawers({ type }) {
   const { greenStashApkGithubUrl, myneApkGithubUrl } = GithubFetch();
   const { greenStashApkFdroidUrl, myneApkFdroidUrl } = FdroidFetch();
@@ -31,53 +42,37 @@ export function Drawers({ type }) {
 }
 
 export function InfoDrawer({ type, apkGithubUrl, apkFdroidUrl }) {
-  const drawerStrings = strings[type];
+  const s = strings[type];
   return (
     <Drawer>
       <DrawerTrigger asChild>
-        <Button variant="outline" size="icon">
-          <Avatar>
-            <AvatarFallback>{drawerStrings.avatarFallback}</AvatarFallback>
-            <AvatarImage src={`src/assets/${type}/${type}-icon.heif`} />
-          </Avatar>
+        <Button variant="default" className="w-full">
+          Download
         </Button>
       </DrawerTrigger>
       <DrawerContent>
         <div className="mx-auto w-full max-w-sm">
           <DrawerHeader>
-            <DrawerTitle>{drawerStrings.title}</DrawerTitle>
-            <DrawerDescription>{drawerStrings.description}</DrawerDescription>
+            <Avatar className="flex flex-col mx-auto h-[4rem] w-[4rem]">
+              <AvatarFallback>{s.avatarFallback}</AvatarFallback>
+              <AvatarImage src={`src/assets/${type}/${type}-icon.heif`} />
+            </Avatar>
+            <DrawerTitle>{s.title}</DrawerTitle>
+            <DrawerDescription>{s.description}</DrawerDescription>
             <ChangelogViewer repo={type} />
           </DrawerHeader>
         </div>
         <div className="p-4">
           <DrawerFooter>
             <div className="flex flex-col md:justify-between md:flex-row">
-              <a href={drawerStrings.playStoreLink} className="flex-grow mb-2 md:mb-0 md:ml-1">
-                <Button>
-                  <IconBrandGooglePlay size={18} className="mr-1" />
-                  Play Store
-                </Button>
-              </a>
-              <a href={apkFdroidUrl} className="flex-grow mb-2 md:mb-0 md:ml-1 md:mr-1">
-                {/* <a
-                href={drawerStrings.fdroidLink}
-                className="flex-grow mb-2 md:mb-0 md:ml-1 md:mr-1"
-              > */}
-                <Button>
-                  <IconBrandAndroid size={18} className="mr-1" />
-                  F-Droid
-                </Button>
-              </a>
-              <a href={apkGithubUrl} className="flex-grow mb-2 md:mb-0 md:mr-1">
-                <Button>
-                  <IconBrandGithub size={18} className="mr-1" />
-                  Github
-                </Button>
-              </a>
+              <DownloadButton href={s.playStoreLink} Icon={IconBrandGooglePlay} label="Play Store" />
+              <DownloadButton href={apkFdroidUrl} Icon={IconBrandAndroid} label="F-Droid" />
+              <DownloadButton href={apkGithubUrl} Icon={IconBrandGithub} label="Github" />
             </div>
             <DrawerClose asChild>
-              <Button variant="outline">Cancel</Button>
+              <Button variant="outline" className="text-md">
+                Cancel
+              </Button>
             </DrawerClose>
           </DrawerFooter>
         </div>
