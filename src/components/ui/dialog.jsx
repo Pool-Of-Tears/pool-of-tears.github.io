@@ -61,6 +61,7 @@ DialogFooter.displayName = "DialogFooter"
 
 const DialogTitle = React.forwardRef(({ className, ...props }, ref) => (
   <div className="flex flex-col items-center">
+    {/* Hacky way of including icon to Title */}
     <IconRocket size={40} className="pb-1"/>
     <DialogPrimitive.Title
       ref={ref}
