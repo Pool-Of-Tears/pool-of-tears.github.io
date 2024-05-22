@@ -1,17 +1,21 @@
 import { Outlet } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import GoTop from '../components/GoTop';
 
 export default function Root() {
   return (
-    <div className="root-layout">
+    <div className="root-layout dark:bg-black/65">
       <header>
         <Navbar />
       </header>
-      <Outlet />
-      {/* <footer>
+      <main>
+        <Outlet />
+        <GoTop />
+      </main>
+      <footer>
         <Footer />
-      </footer> */}
+      </footer>
     </div>
   );
 }
