@@ -58,7 +58,7 @@ const Home = () => {
   return (
     <div className="home bg-gradient-to-b from-slate-300/40 from-1% dark:from-black/75">
       <div className="animate-slidein opacity-0 [--slidein-delay:300ms] mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 ">
-        <h1 className="home-title transition-all shadow-black dark:shadow-white drop-shadow-md hover:drop-shadow-2xl duration-1000 hover:duration-1000">
+        <h1 className="home-title transition-colors shadow-black dark:shadow-white drop-shadow-md hover:drop-shadow-2xl">
           {home.title}
         </h1>
         <p className="text-center align-middle p-6">{home.description}</p>
