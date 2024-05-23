@@ -4,7 +4,7 @@ import { visualizer } from "rollup-plugin-visualizer";
 import { defineConfig } from "vite";
 
 export default defineConfig({
-  base: "/",
+  base: '/<REPO>/',
   plugins: [react(), visualizer()],
   resolve: {
     alias: {

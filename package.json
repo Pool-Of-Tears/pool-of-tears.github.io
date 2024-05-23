@@ -1,5 +1,6 @@
 {
   "name": "pooloftears-website",
+  "homepage": "https://pool-of-tears.github.io/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
