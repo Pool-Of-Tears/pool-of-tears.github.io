@@ -26,8 +26,8 @@ const GoTop = () => {
   return (
     <Button
       onClick={handleGoTop}
-      className={`go-top-button rounded-full  transition-all duration-500 ${
-        isVisible ? 'opacity-100' : 'opacity-0'
+      className={`go-top-button shadow-md rounded-full  transition-all duration-500 ${
+        isVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'
       }`}
       variant="default"
     >
