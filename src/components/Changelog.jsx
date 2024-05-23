@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, lazy, Suspense } from 'react';
 import { Badge } from './ui/badge.jsx';
 import { Button } from './ui/button.jsx';
 import {
@@ -26,7 +26,7 @@ const ChangelogViewer = ({ repo }) => {
     <div className="flex justify-center items-center p-2">
       <Dialog>
         <DialogTrigger asChild>
-          <Badge variant="secondary" className="h-[2rem] shadow-md" >
+          <Badge variant="secondary" className="h-[2rem] shadow-md">
             <IconRocket size={16} className="mr-1" />
             {s.title}
           </Badge>
@@ -39,12 +39,14 @@ const ChangelogViewer = ({ repo }) => {
             </DialogDescription>
           </DialogHeader>
           <div className="flex-col px-2">
-            <ChangelogFetcher repo={repo} onVersionFetched={handleVersionFetched} />
+            <Suspense fallback={<p>{s.loading}</p>}>
+              <ChangelogFetcher repo={repo} onVersionFetched={handleVersionFetched} />
+            </Suspense>
           </div>
           <DialogFooter className="sm:justify-end">
             <DialogClose asChild>
               <Button type="button" variant="outline">
-                Close
+                {s.close}
               </Button>
             </DialogClose>
           </DialogFooter>
