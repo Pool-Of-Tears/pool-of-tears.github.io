@@ -73,9 +73,11 @@ export function FdroidFetch() {
   const [myneApkFdroidUrl, setMyneApkFdroidUrl] = useState('');
   const [greenStashApkFdroidUrl, setGreenStashApkFdroidUrl] = useState('');
 
+
   useEffect(() => {
     const fetchApkUrl = (packageName) => {
-      return axios.get(`/fdroid/packages/${packageName}`).then((response) => {
+      const baseURL = import.meta.env.MODE === 'production' ? 'https://f-droid.org/api/v1' : '/fdroid';
+      return axios.get(`${baseURL}/packages/${packageName}`).then((response) => {
         console.log('Response data:', response.data);
         const latestPackage = response.data;
         if (!latestPackage) {
