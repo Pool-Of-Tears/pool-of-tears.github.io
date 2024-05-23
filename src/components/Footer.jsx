@@ -1,7 +1,15 @@
-import {
-  IconBrandGithubFilled,
-  IconBrandTelegram,
-} from "@tabler/icons-react"
+import { IconBrandGithubFilled, IconBrandTelegram } from '@tabler/icons-react';
+import { strings } from '../lib/strings';
+
+const ContactLink = ({ href, icon: Icon, label }) => (
+  <a href={href} className="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-white">
+    <Icon className="hidden md:block" size={20} />
+    <Icon className="block md:hidden mx-2" size={30} />
+    <span className="sr-only">{label}</span>
+  </a>
+);
+
+const s = strings.navbar.navItems;
 
 export const Footer = () => (
   <div className="mx-auto w-full bg-violet-300 dark:bg-background">
@@ -12,21 +20,8 @@ export const Footer = () => (
         </span>
       </div>
       <div className="flex justify-center md:justify-start mt-4 md:mt-0 space-x-5 rtl:space-x-reverse">
-        <a href="#" className="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-white">
-          <IconBrandTelegram className="hidden md:block" size={20} />
-          <IconBrandTelegram className="block md:hidden mx-2" size={30} />
-          <span className="sr-only">Telegram Channel</span>
-        </a>
-        {/* <a href="#" className="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-white">
-          <IconBrandDiscordFilled className="hidden md:block" size={20} />
-          <IconBrandDiscordFilled className="block md:hidden mx-2" size={30} />
-          <span className="sr-only">Discord community</span>
-        </a> */}
-        <a href="#" className="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-white">
-          <IconBrandGithubFilled className="hidden md:block" size={20} />
-          <IconBrandGithubFilled className="block md:hidden mx-2" size={30} />
-          <span className="sr-only">GitHub account</span>
-        </a>
+        <ContactLink href={s.contact.socials[0].link} icon={IconBrandGithubFilled} label={s.contact.socials[0].title} />
+        <ContactLink href={s.contact.socials[1].link} icon={IconBrandTelegram} label={s.contact.socials[1].title} />
       </div>
     </div>
   </div>
