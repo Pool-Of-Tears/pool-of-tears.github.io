@@ -73,6 +73,22 @@ bun run preview
 For more options, see the [Vite guide][vite-guide].
 
 
+### Environments
+
+You'll be requiring two environmaent variables:
+
+```env
+VITE_GITHUB_TOKEN='your_github_token'
+VITE_MODE=dev
+```
+
+- Your Github Personal Access Token is required for fetching from Github's API with lower rate limits.
+- The mode needs to be set in order for the proxies in `vite.config.js` to function properly.
+
+>[!Note]
+>
+>These environment variables aren't needed in the production build as a separate file! Use Github Action's environmental secrets to add your variables.
+
 [bun]: https://bun.sh/
 [shadcnui]: https://github.com/shadcn-ui/ui
 [vite-guide]: https://vitejs.dev/guide/build
