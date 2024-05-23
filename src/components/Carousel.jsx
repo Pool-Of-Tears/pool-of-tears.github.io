@@ -87,19 +87,19 @@ export function CarouselFeatured() {
         slidesToShow: 1,
       }}
       orientation="vertical"
-      className="w-full max-w-xs"
+      className="mx-auto w-2/3 max-w-lg sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/3"
     >
       <CarouselContent>
         {images.map((image, index) => (
           <CarouselItem key={index} className="pl-1 basis-full w-full">
-              <Card className="bg-transparent border-0 shadow-none">
-                <CardContent className="flex w-full basis-full aspect-auto items-center justify-center p-1">
-                  <img src={image} className="fill-background" style={{objectFit: 'cover', objectPosition: 'center'}} />
-                </CardContent>
-              </Card>
+            <Card className="bg-transparent border-0 shadow-none">
+              <CardContent className="flex w-full basis-full aspect-auto items-center justify-center p-1">
+                <img src={image} className="fill-background" style={{ objectFit: 'cover', objectPosition: 'center' }} />
+              </CardContent>
+            </Card>
           </CarouselItem>
         ))}
       </CarouselContent>
     </Carousel>
-  )
+  );
 }

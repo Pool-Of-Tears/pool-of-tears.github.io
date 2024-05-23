@@ -34,11 +34,11 @@ const Section = ({ type, CarouselComponent, reverse }) => {
             />
             <h2 className="title text-center">{sectionData.title}</h2>
             <p className="text-center">{sectionData.description}</p>
-            <div className="flex flex-col my-10 mx-5 p-10 bg-accent/80 rounded-lg text-center shadow-xl">
+            <div className="flex flex-col my-10 mx-5 p-5 sm:p-10 bg-accent/80 rounded-lg text-center shadow-xl">
               <h3>{home.feat[1]}</h3>
               <ul className="text-left overflow-auto h-[300px] md:h-auto md:overflow-visible">
                 {sectionData.features.map((item, index) => (
-                  <li key={index} className="list-disc ml-5 text-base">
+                  <li key={index} className="list-disc ml-5 text-sm sm:text-base">
                     {item}
                   </li>
                 ))}
@@ -67,7 +67,7 @@ const Home = () => {
       <Section type="myne" CarouselComponent={CarouselMyne} reverse={true} />
       <section id="featured" className="mx-auto my-5 p-2 text-center">
         <div className="mx-auto w-full justify-center animate-slidein opacity-0 [--slidein-delay:500ms]">
-          <h2>{home.feat[0]}</h2>
+          <h3>{home.feat[0]}</h3>
           <CarouselFeatured />
         </div>
       </section>
