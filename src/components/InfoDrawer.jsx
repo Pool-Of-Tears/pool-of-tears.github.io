@@ -12,6 +12,8 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 import ChangelogViewer from './Changelog';
 import { IconBrandAndroid, IconBrandGithub, IconBrandGooglePlay } from '@tabler/icons-react';
+import greenstashIcon from '../assets/greenstash/greenstash-icon.heif';
+import myneIcon from '../assets/myne/myne-icon.heif';
 import { GithubFetch, FdroidFetch } from '../lib/fetch';
 import { strings } from '../lib/strings';
 
@@ -55,7 +57,7 @@ export function InfoDrawer({ type, apkGithubUrl, apkFdroidUrl }) {
           <DrawerHeader>
             <Avatar className="flex flex-col mx-auto h-[4rem] w-[4rem]">
               <AvatarFallback>{s.avatarFallback}</AvatarFallback>
-              <AvatarImage src={`src/assets/${type}/${type}-icon.heif`} />
+              <AvatarImage src={type === 'greenStash' ? greenstashIcon : myneIcon } />
             </Avatar>
             <DrawerTitle>{s.title}</DrawerTitle>
             <DrawerDescription>{s.description}</DrawerDescription>

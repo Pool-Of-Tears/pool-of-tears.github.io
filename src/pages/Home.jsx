@@ -1,5 +1,7 @@
 import { Drawers } from '../components/InfoDrawer';
 import { CarouselGreenstash, CarouselMyne, CarouselFeatured } from '../components/Carousel';
+import greenstashIcon from '../assets/greenstash/greenstash-icon.heif';
+import myneIcon from '../assets/myne/myne-icon.heif';
 import { strings } from '../lib/strings';
 
 const home = strings.HomePage;
@@ -26,7 +28,7 @@ const Section = ({ type, CarouselComponent, reverse }) => {
           </div>
           <div className="w-full lg:w-1/2 align-middle text-center mb-8">
             <img
-              src={`src/assets/${type}/${type}-icon.heif`}
+              src={type === 'greenStash' ? greenstashIcon : myneIcon}
               alt={sectionData.AvatarFallback}
               className="mx-auto h-[4rem] w-[4rem] rounded-full"
             />
