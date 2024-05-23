@@ -70,7 +70,7 @@ module.exports = {
           from: { height: 'var(--radix-accordion-content-height)' },
           to: { height: '0' },
         },
-        'slidein': {
+        slidein: {
           from: {
             opacity: '0',
             transform: 'translateY(-10px)',
@@ -82,9 +82,15 @@ module.exports = {
         },
       },
       animation: {
-        'slidein': 'slidein 1s ease var(--slidein-delay, 0) forwards',
+        slidein: 'slidein 1s ease var(--slidein-delay, 0) forwards',
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
+      },
+      transitionDuration: {
+        50: '50ms',
+        40: '40ms',
+        30: '30ms',
+        25: '25ms',
       },
     },
   },
