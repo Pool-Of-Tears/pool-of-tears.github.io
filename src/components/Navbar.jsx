@@ -110,7 +110,7 @@ function Navbar() {
   return (
     <nav className="navbar backdrop-filter backdrop-blur-lg bg-opacity-30">
       <div className="w-full flex justify-between items-center mx-auto">
-        <div className="flex order-2 sm:order-1 mr-4">
+        <div className="flex order-2 sm:order-1">
           <Avatar className="transition-all hover:rotate-45">
             <AvatarFallback>POT</AvatarFallback>
             <AvatarImage src="https://github.com/Pool-Of-Tears.png" />
