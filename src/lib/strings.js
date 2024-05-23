@@ -38,7 +38,7 @@ export const strings = {
             title: "Greenstash",
             description:
               "A simple FOSS android app to help you plan and manage your savings goals easily and establish the habit of saving money.",
-            link: "/#greenStash",	
+            link: "/#greenStash",
             },
         ],
       },
@@ -107,6 +107,9 @@ export const strings = {
   changelog: {
     title: "What's New",
     description: "Changelog of",
+    loading: "Loading changelog...",
+    error: "Failed to fetch changelog",
+    close: "Close",
   },
   // Pages
   HomePage: {
@@ -121,4 +124,8 @@ export const strings = {
     description: "We're sorry, but the page you were looking for doesn't exist.",
     avatarFallback: "Cat Not Found",
   },
+  LoadingPage: {
+    title: "Loading...",
+    avatarFallback: "NekoSpinner",
+  }
 };
