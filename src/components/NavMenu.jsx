@@ -79,7 +79,7 @@ export function NavMenu() {
         </NavigationMenuItem>
         {createNavigationMenuItem({
           title: s.projects.title,
-          content: generateListItems(s.projects.project),
+          content: generateListItems(s.projects.project.apps),
         })}
         {createNavigationMenuItem({
           title: s.contact.title,

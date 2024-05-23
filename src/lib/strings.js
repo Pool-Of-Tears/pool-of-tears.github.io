@@ -6,7 +6,7 @@ export const strings = {
       title: "Navigation Menu",
       about: {
         title: "About",
-        description: "Curated creations from Starry Shivam's Open-Source journey. Explore, contribute, and innovate!",
+        description: "Curated creations from our Open-Source journey. Explore, contribute, and innovate!",
         org: "PoolOfTears",
         info: [
           {
@@ -28,19 +28,23 @@ export const strings = {
       },
       projects: {
         title: "Projects",
-        project: [
-          {
-            title: "Myne",
-            description: "An android app to download & read ebooks from Project Gutenberg, built with Jetpack Compose.",
-            link: "/#myne",
-          },
-          {
-            title: "Greenstash",
-            description:
-              "A simple FOSS android app to help you plan and manage your savings goals easily and establish the habit of saving money.",
-            link: "/#greenStash",
+        project: {
+          title: ["Apps"],
+          apps:[
+            {
+              title: "Greenstash",
+              description:
+                "A simple FOSS android app to help you plan and manage your savings goals easily and establish the habit of saving money.",
+              link: "/#greenStash",
             },
-        ],
+            {
+              title: "Myne",
+              description:
+                "An android app to download & read ebooks from Project Gutenberg, built with Jetpack Compose.",
+              link: "/#myne",
+            },
+          ],
+        },
       },
       contact: {
         title: "Contact",
@@ -127,5 +131,5 @@ export const strings = {
   LoadingPage: {
     title: "Loading...",
     avatarFallback: "NekoSpinner",
-  }
+  },
 };
