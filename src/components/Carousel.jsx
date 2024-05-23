@@ -87,7 +87,7 @@ export function CarouselFeatured() {
         slidesToShow: 1,
       }}
       orientation="vertical"
-      className="mx-auto w-2/3 max-w-lg sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/3"
+      className="mx-auto max-w-lg w-1/2 lg:w-2/3"
     >
       <CarouselContent>
         {images.map((image, index) => (
