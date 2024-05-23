@@ -22,6 +22,9 @@ export function GithubFetch() {
 
   useEffect(() => {
     const fetchApkUrl = async (repo) => {
+      const baseURL = import.meta.env.MODE === 'production' ? 'https://api.github.com' : '/github';
+
+
       const cachedUrl = localStorage.getItem(`apkUrl-${repo}`);
       const cachedTime = localStorage.getItem(`time-${repo}`);
 
@@ -30,7 +33,7 @@ export function GithubFetch() {
         return cachedUrl;
       }
 
-      const response = await axios.get(`/github/repos/Pool-Of-Tears/${repo}/releases`, {
+      const response = await axios.get(`${baseURL}/repos/Pool-Of-Tears/${repo}/releases`, {
         headers: {
           Authorization: `${import.meta.env.VITE_GITHUB_TOKEN}`,
         },
@@ -70,9 +73,11 @@ export function FdroidFetch() {
   const [myneApkFdroidUrl, setMyneApkFdroidUrl] = useState('');
   const [greenStashApkFdroidUrl, setGreenStashApkFdroidUrl] = useState('');
 
+
   useEffect(() => {
     const fetchApkUrl = (packageName) => {
-      return axios.get(`/fdroid/packages/${packageName}`).then((response) => {
+      const baseURL = import.meta.env.MODE === 'production' ? 'https://f-droid.org/api/v1' : '/fdroid';
+      return axios.get(`${baseURL}/packages/${packageName}`).then((response) => {
         console.log('Response data:', response.data);
         const latestPackage = response.data;
         if (!latestPackage) {
@@ -109,6 +114,9 @@ export function FdroidFetch() {
  * The function also caches the fetched APK URLs in the browser's local storage to improve performance.
  */
 export const fetchChangelog = async (repo) => {
+  // Set the base URL based on the environment
+  const baseURL = import.meta.env.MODE === 'production' ? 'https://api.github.com' : '/github';
+
   // Try to get the changelog from localStorage
   const cachedChangelog = localStorage.getItem(`changelog-${repo}`);
   const cachedVersion = localStorage.getItem(`version-${repo}`);
@@ -119,7 +127,7 @@ export const fetchChangelog = async (repo) => {
     return { changelog: cachedChangelog, version: cachedVersion };
   }
 
-  const response = await axios.get(`/github/repos/Pool-Of-Tears/${repo}/releases/latest`, {
+  const response = await axios.get(`${baseURL}/repos/Pool-Of-Tears/${repo}/releases/latest`, {
     headers: {
       // requires a GitHub personal access token with the `repo` scope. Use a `.env` file to store the token.
       Authorization: `${import.meta.env.VITE_GITHUB_TOKEN}`,
