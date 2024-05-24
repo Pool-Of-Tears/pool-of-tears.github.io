@@ -17,7 +17,6 @@ export default defineConfig({
       '/fdroid': {
         target: 'https://f-droid.org',
         changeOrigin: true,
-        secure: false,
         rewrite: (path) => path.replace(/^\/fdroid/, '/api/v1'),
       },
       '/github': {

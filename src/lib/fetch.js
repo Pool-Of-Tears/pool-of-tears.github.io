@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { strings } from './strings';
 
-  const currentTime = new Date().getTime();
-  const oneHour = 60 * 60 * 1000; // in milliseconds
+const currentTime = new Date().getTime();
+const oneHour = 60 * 60 * 1000; // in milliseconds
 
+const greenStash_s = strings.greenStash;
+const myne_s = strings.myne;
 /**
  * Fetches the download URLs of the latest APKs from the GitHub repositories of Myne and GreenStash.
  *
@@ -24,11 +27,10 @@ export function GithubFetch() {
     const fetchApkUrl = async (repo) => {
       const baseURL = import.meta.env.MODE === 'production' ? 'https://api.github.com' : '/github';
 
-
       const cachedUrl = localStorage.getItem(`apkUrl-${repo}`);
       const cachedTime = localStorage.getItem(`time-${repo}`);
 
-     // If the APK URL is in the cache and it's not older than an hour, use it
+      // If the APK URL is in the cache and it's not older than an hour, use it
       if (cachedUrl && cachedTime && currentTime - cachedTime < oneHour) {
         return cachedUrl;
       }
@@ -48,12 +50,19 @@ export function GithubFetch() {
       localStorage.setItem(`time-${repo}`, currentTime.toString());
 
       return apkUrl;
-    }
+    };
 
-    Promise.all([fetchApkUrl('Myne'), fetchApkUrl('GreenStash')]).then(([myneUrl, greenStashUrl]) => {
-      setMyneApkUrl(myneUrl);
-      setGreenStashApkUrl(greenStashUrl);
-    });
+    Promise.all([fetchApkUrl('Myne'), fetchApkUrl('GreenStash')])
+      .then(([myneUrl, greenStashUrl]) => {
+        setMyneApkUrl(myneUrl);
+        setGreenStashApkUrl(greenStashUrl);
+      })
+      // in case of failure, set fallback URLs
+      .catch((error) => {
+        console.error('Error fetching APK URLs:', error);
+        setMyneApkUrl(myne_s.githubLink);
+        setGreenStashApkUrl(greenStash_s.githubLink);
+      });
   }, []);
 
   return { myneApkGithubUrl, greenStashApkGithubUrl };
@@ -73,7 +82,6 @@ export function FdroidFetch() {
   const [myneApkFdroidUrl, setMyneApkFdroidUrl] = useState('');
   const [greenStashApkFdroidUrl, setGreenStashApkFdroidUrl] = useState('');
 
-
   useEffect(() => {
     const fetchApkUrl = (packageName) => {
       const baseURL = import.meta.env.MODE === 'production' ? 'https://f-droid.org/api/v1' : '/fdroid';
@@ -90,12 +98,17 @@ export function FdroidFetch() {
       });
     };
 
-    Promise.all([fetchApkUrl('com.starry.myne'), fetchApkUrl('com.starry.greenstash')]).then(
-      ([myneUrl, greenStashUrl]) => {
+    Promise.all([fetchApkUrl('com.starry.myne'), fetchApkUrl('com.starry.greenstash')])
+      .then(([myneUrl, greenStashUrl]) => {
         setMyneApkFdroidUrl(myneUrl);
         setGreenStashApkFdroidUrl(greenStashUrl);
-      },
-    );
+      })
+      // in case of failure, set fallback URLs
+      .catch((error) => {
+        console.error('Error fetching APK URLs:', error);
+        setMyneApkFdroidUrl(myne_s.fdroidLink);
+        setGreenStashApkFdroidUrl(greenStash_s.fdroidLink);
+      });
   }, []);
 
   return { myneApkFdroidUrl, greenStashApkFdroidUrl };

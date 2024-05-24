@@ -71,11 +71,12 @@ export const strings = {
       },
     },
   },
-  // Drawers
+  // Apps
   greenStash: {
     title: "Greenstash",
     description: "Set your budget goals with Greenstash!",
     avatarFallback: "Greenstash Logo",
+    githubLink: "https://github.com/Pool-Of-Tears/GreenStash",
     fdroidLink: "https://f-droid.org/packages/com.starry.greenstash/",
     playStoreLink: "https://play.google.com/store/apps/details?id=com.starry.greenstash",
     features: [
@@ -96,6 +97,7 @@ export const strings = {
     title: "Myne",
     description: "Discover new reads with Myne!",
     avatarFallback: "Myne Logo",
+    githubLink: "https://github.com/Pool-Of-Tears/Myne",
     fdroidLink: "https://f-droid.org/packages/com.starry.myne/",
     playStoreLink: "https://play.google.com/store/apps/details?id=com.starry.myne",
     features: [
