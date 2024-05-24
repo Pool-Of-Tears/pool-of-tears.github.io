@@ -11,9 +11,16 @@ import {
   DialogTitle,
   DialogTrigger,
 } from './ui/dialog.jsx';
+import { SkeletonShortText, SkeletonCard } from './Loader.jsx';
 import { IconRocket } from '@tabler/icons-react';
-import ChangelogFetcher from '../lib/changelog.jsx';
 import { strings } from '../lib/strings.js';
+
+// Lazy load the Changelog component with delay of 2 seconds
+const ChangelogFetcher = lazy(() => {
+  return new Promise(resolve => {
+    setTimeout(() => resolve(import('../lib/changelog.jsx')), 2000);
+  });
+});
 
 const ChangelogViewer = ({ repo }) => {
   const [version, setVersion] = useState('');
@@ -35,11 +42,15 @@ const ChangelogViewer = ({ repo }) => {
           <DialogHeader>
             <DialogTitle>{s.title}</DialogTitle>
             <DialogDescription className="m-0">
-              {s.description} <strong>{version}</strong>
+              <span>
+                {s.description}
+                &nbsp;
+                {version ? <strong>{version}</strong> : <SkeletonShortText />}
+              </span>
             </DialogDescription>
           </DialogHeader>
           <div className="flex-col px-2">
-            <Suspense fallback={<p>{s.loading}</p>}>
+            <Suspense fallback={<SkeletonCard />}>
               <ChangelogFetcher repo={repo} onVersionFetched={handleVersionFetched} />
             </Suspense>
           </div>
